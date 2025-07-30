@@ -1,7 +1,6 @@
 "use client";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
-import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 
 // Fix for default markers in React Leaflet
@@ -10,7 +9,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { Photo } from '@/types/photo';
 
-delete (Icon.Default.prototype as any)._getIconUrl;
+delete (Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
 Icon.Default.mergeOptions({
   iconUrl: markerIcon.src,
   iconRetinaUrl: markerIcon2x.src,
@@ -23,7 +22,7 @@ interface TravelMapProps {
   selectedLocation: string | null;
 }
 
-export default function TravelMap({ photos, onLocationSelect, selectedLocation }: TravelMapProps) {
+export default function TravelMap({ photos, onLocationSelect }: TravelMapProps) {
   // Group photos by location
   const locationGroups = photos.reduce((acc, photo) => {
     const key = `${photo.location.coordinates[0]},${photo.location.coordinates[1]}`;

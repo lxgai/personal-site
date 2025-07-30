@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, Typography, Stack, Link as MuiLink } from "@mui/material";
+import { Box, Typography, Stack, Link as MuiLink } from "@mui/material";
 
 
 export default function Home() {
@@ -76,7 +76,7 @@ export default function Home() {
             WebkitTextStroke: '1px #252525',
             textStroke: '1px #252525'
           }}>
-            Hi, I'm Lucy.
+            Hi, I&apos;m Lucy.
           </Typography>
           <Typography variant="body1" sx={{ mb: 1, fontFamily: 'var(--font-ibm-plex-mono), monospace', fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
             Current software engineer, travel enthusiast, and overthinker.

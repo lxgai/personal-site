@@ -1,6 +1,6 @@
 import { Box, ImageList, ImageListItem, ImageListItemBar, Chip } from '@mui/material';
-import { useState } from 'react';
 import { Photo } from '@/types/photo';
+import Image from 'next/image';
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -9,7 +9,6 @@ interface PhotoGalleryProps {
 }
 
 export default function PhotoGallery({ photos, onLocationClick, selectedLocation }: PhotoGalleryProps) {
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   return (
     <Box sx={{ flex: 1, overflow: 'auto' }}>
@@ -66,18 +65,19 @@ export default function PhotoGallery({ photos, onLocationClick, selectedLocation
                 transform: 'scale(1.05)',
               },
             }}
-            onClick={() => setSelectedPhoto(photo)}
           >
-            <img
-              src={photo.thumbnail}
-              alt={photo.caption || photo.location.name}
-              loading="lazy"
-              style={{ 
-                height: '200px', 
-                objectFit: 'cover',
-                borderRadius: '8px',
-              }}
-            />
+            <Box sx={{ position: 'relative', height: '200px', width: '100%' }}>
+              <Image
+                src={photo.thumbnail}
+                alt={photo.caption || photo.location.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ 
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                }}
+              />
+            </Box>
             <ImageListItemBar
               title={photo.location.name}
               subtitle={photo.date}

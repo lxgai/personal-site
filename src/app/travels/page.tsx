@@ -11,7 +11,6 @@ const TravelMap = dynamic(() => import('@/components/TravelMap'), {
 
 import PhotoGallery from '@/components/PhotoGallery';
 import { Photo } from '@/types/photo';
-import { getPhotos } from '@/lib/sanity.queries';
 
 // Mock data for development/fallback
 const mockPhotos: Photo[] = [

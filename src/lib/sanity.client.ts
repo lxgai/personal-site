@@ -19,7 +19,7 @@ export const client = sanityConfigured ? createClient({
 
 const builder = sanityConfigured && client ? imageUrlBuilder(client) : null
 
-export const urlFor = (source: any) => {
+export const urlFor = (source: { asset?: { _ref?: string; _type?: string } }) => {
   if (!builder) {
     throw new Error('Sanity is not configured. Please update your .env.local file.')
   }
